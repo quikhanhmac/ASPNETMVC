@@ -1,11 +1,22 @@
-﻿@model IEnumerable<TodoList.Models.Tache>
+﻿@model TodoList.Models.TacheVM
 
 @{
     ViewData["Title"] = "Index";
 }
 
 <h2>Index</h2>
+@{ 
+    int nbTacheTerminee = (int)ViewBag.nbTacheTerminee;
+    string phrase = nbTacheTerminee > 1 ? "taches terminées sur" : "tache terminée sur";
+}
+<div>@nbTacheTerminee @phrase @Model.Taches.Count()</div>
 
+<div>
+    <input asp-controller="Taches" asp-for="Taches">
+    <button value="TSelect">Filtrer</button>
+
+
+</div>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -13,22 +24,22 @@
     <thead>
         <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Description)
+                    @Html.DisplayNameFor(model => model.Taches[0].Description)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.DateCreation)
+                    @Html.DisplayNameFor(model => model.Taches[0].DateCreation)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.DateEcheance)
+                    @Html.DisplayNameFor(model => model.Taches[0].DateEcheance)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Terminee)
+                    @Html.DisplayNameFor(model => model.Taches[0].Terminee)
                 </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.Taches) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)

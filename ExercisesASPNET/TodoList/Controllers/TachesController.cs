@@ -19,8 +19,11 @@ namespace TodoList.Controllers
         }
 
         // GET: Taches
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(TacheVM tvm)
         {
+            IQueryable<Tache> Taches = _context.Taches.Where(t=>t.Terminee);
+
+            ViewBag.nbTacheTerminee = _context.Taches.Where(t => t.Terminee).Count();
             return View(await _context.Taches.ToListAsync());
         }
 

@@ -1,7 +1,19 @@
-﻿
+﻿@model TodoList.Models.Calcul
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
-@Html.Partial("VuePartielle")
+<h2>Calculs de dates</h2>
+@Html.Partial("CalculsDates")
+<form asp-action="AjouterJours">
+    <input asp-for="DateDeb">
+    <select asp-for="Operateur">
+        <option value="Addition">+</option>
+        <option value="Soustraction">-</option>
+    </select>
+    <input asp-for="Nbj">
+    <span asp-validation-for="Nbj" class="text-danger"></span>
+    <label>Nombre de jours</label>
+    <button type="submit" class="btn btn-primary">=</button>
+    <input value="@ViewBag.Result">
+</form>

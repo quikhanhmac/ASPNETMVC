@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Ciqual.Models.Constituant>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Constituants</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nom)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Unite)
+                </th>
+                
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Unite)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
