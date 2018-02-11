@@ -1,12 +1,50 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-<div>
-    @ViewBag.nbFamille <label>Familles</label><br/>
-    @ViewBag.nbConstituant <label>Constituants</label><br/>
-    @ViewBag.nbAliment <label>Aliments</label>
+<div class="item active">
+    <img src="~/images/aliments.jpg" alt="Aliments" class="img-responsive" />
+    <div class="page-header">
+        <h1 align="center">Base Ciqual 2016 des aliments</h1>
+    </div>
 </div>
-  
+
+<style>
+    .nav-pills > li {
+        margin-left: 2em;
+        margin-right: 2em;
+    }
+</style>
+<nav class="navbar">
+    <ul class="nav nav-pills h3" role="tablist">
+        <li>
+            <a asp-controller="Familles">
+                <span class="glyphicon glyphicon-grain" />Famille <span class="label label-primary">@ViewData["NbFamilles"]</span>
+            </a>
+        </li>
+        <li>
+            <a asp-controller="Constituants">
+                <span class="glyphicon glyphicon-tint" />Constituants <span class="label label-primary">@ViewData["NbConstituants"]</span>
+            </a>
+        </li>
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <span class="glyphicon glyphicon-apple" />Aliments <span class="label label-primary">@ViewData["NbAliments"]</span> <span class="caret" />
+            </a>
+            <ul class="dropdown-menu">
+                <li><a asp-controller="Aliments">Par famille</a></li>
+                <li><a asp-controller="Aliments" asp-action="ListByFirstLetter">Par nom</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+@*<div class="h2">
+        <div>@ViewData["NbFamilles"] familles</div>
+        <div>@ViewData["NbConstituants"] constituants</div>
+        <div>@ViewData["NbAliments"] aliments</div>
+    </div>
+*@
+
 @*<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
