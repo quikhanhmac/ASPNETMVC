@@ -1,0 +1,54 @@
+﻿@model Ciqual.Models.AlimentsVM
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form asp-controller="Aliments" asp-action="Index" method="get">
+    <p>
+        <span>Famille</span>
+        <select asp-for="FSelect"
+                asp-items="@(new SelectList(Model.Familles,"CodeFamille","Nom"))">
+            <option value=""></option>
+        </select>
+        <input type="submit" value="Filtrer" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Aliments[0].Nom)
+            </th>
+            <th>
+                
+                @Html.DisplayNameFor(model => model.Aliments[0].NbConstituants)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Aliments)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NbConstituants)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdAliment">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdAliment">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdAliment">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

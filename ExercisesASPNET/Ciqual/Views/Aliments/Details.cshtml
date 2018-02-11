@@ -1,0 +1,88 @@
+﻿@model Ciqual.Models.Aliment
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Detail de l'aliment</h2>
+
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nom)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nom)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CodeFamilleNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CodeFamilleNavigation.Nom)
+        </dd>
+    </dl>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Composition[0].IdConstituantNavigation.Nom)
+            </th>
+            <th>
+
+                @Html.DisplayNameFor(model => model.Composition[0].IdConstituantNavigation.Unite)
+            </th>
+            <th>
+
+                @Html.DisplayNameFor(model => model.Composition[0].ValeurMoy)
+            </th>
+            <th>
+
+                @Html.DisplayNameFor(model => model.Composition[0].ValeurMin)
+            </th>
+            <th>
+
+                @Html.DisplayNameFor(model => model.Composition[0].ValeurMax)
+            </th>
+            <th>
+
+                @Html.DisplayNameFor(model => model.Composition[0].NoteConfiance)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Composition)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdConstituantNavigation.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdConstituantNavigation.Unite)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValeurMoy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValeurMin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValeurMax)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NoteConfiance)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdAliment">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdAliment">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdAliment">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.IdAliment">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

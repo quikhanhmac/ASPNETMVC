@@ -14,8 +14,11 @@
                 @Html.DisplayNameFor(model => model.CodeFamille)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Nom)
+                <a asp-action="Index" asp-route-sort="@ViewData["TriParNom"]">
+                    @Html.DisplayNameFor(model => model.Nom)
+                </a>
             </th>
+
         </tr>
     </thead>
     <tbody>

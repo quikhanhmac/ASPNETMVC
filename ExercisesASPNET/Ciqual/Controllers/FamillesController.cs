@@ -20,9 +20,20 @@ namespace Ciqual.Controllers
         }
 
         // GET: Familles
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sort)
         {
-            return View(await _context.Famille.ToListAsync());
+            IQueryable<Famille> familles = _context.Famille;
+            if (string.IsNullOrEmpty(sort)) sort = "Nom";
+            if (sort.EndsWith("_desc"))
+            {
+                string prop = sort.Substring(0, sort.Length - 5);
+                familles = familles.OrderByDescending(e => EF.Property<object>(e, prop));
+            }
+            else
+                familles = familles.OrderBy(e => EF.Property<object>(e, sort));
+            ViewData["TriParNom"] = sort == "Nom" ? "Nom_desc" : "Nom";
+
+            return View(await familles.ToListAsync());
         }
     }
 }

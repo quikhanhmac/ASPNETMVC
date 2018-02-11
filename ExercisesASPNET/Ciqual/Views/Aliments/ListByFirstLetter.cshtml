@@ -1,0 +1,72 @@
+﻿@model PageItems<Ciqual.Models.Aliment>
+
+@{
+    ViewData["Title"] = "ListByFirstLetter";
+}
+
+<h2>ListByFirstLetter</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class="list-inline">
+    @{
+        for (int i = 65; i < 91; i++)
+        {
+            <a asp-controller="Aliments" asp-action="ListByFirstLetter" asp-route-id="@Char.ConvertFromUtf32(i)">@Char.ConvertFromUtf32(i)</a>
+        }
+    }
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].CodeFamilleNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodeFamilleNavigation.Nom)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdAliment">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdAliment">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdAliment">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@{
+    var etatPrecedent = !Model.HasPreviousPage ? "disabled" : "";
+    var etatsuivant = !Model.HasNextPage ? "disabled" : "";
+}
+@{ int page = Model.TotalPages;}
+<a asp-action="ListByFirstLetter"
+   asp-route-page="@(Model.PageIndex - 1)"
+   class="btn btn-default @etatPrecedent">
+    Précédent
+</a>
+@{
+    for(int i = 1; i < page; i++) { 
+    <a asp-action="ListByFirstLetter" asp-route-page="@i"
+     class="btn btn-default @i">@i</a>
+    }
+}
+<a asp-action="ListByFirstLetter"
+   asp-route-page="@(Model.PageIndex + 1)"
+   class="btn btn-default @etatsuivant">
+    Suivant
+</a>
+
