@@ -42,7 +42,7 @@ namespace Ciqual.Controllers
                 FSelect = _context.Famille.FirstOrDefault().CodeFamille;
             vmAliment.FSelect = FSelect;
             vmAliment.Aliments = new List<Aliment>();
-            string req = @"select a.Nom, count(*) NbConstiuants
+            string req = @"select a.Nom, count(*) NbConstituants
 from Aliment a
 inner join Composition c on c.IdAliment=a.IdAliment
 where a.CodeFamille=@FSelect
@@ -69,7 +69,7 @@ order by a.Nom
                         //a.IdAliment=(int)sdr["IdAliment"];
                         a.Nom = (string)sdr["Nom"];
                         //a.CodeFamille = (string)sdr["CodeFamille"];
-                        //a.NbConstituants = (int)sdr["NbConstituants"];
+                        a.NbConstituants = (int)sdr["NbConstituants"];
                         vmAliment.Aliments.Add(a);
                     }
                 }
