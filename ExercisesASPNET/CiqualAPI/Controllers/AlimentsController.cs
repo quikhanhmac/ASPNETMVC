@@ -35,13 +35,14 @@ namespace CiqualAPI.Controllers
             {
                 return BadRequest(ModelState);
             }
-
-            var aliment = await _context.Aliment.SingleOrDefaultAsync(m => m.IdAliment == id);
+            var aliment = await _context.Aliment.Where(m => m.IdAliment == id)
+  .Include(m => m.Composition).ThenInclude(c => c.IdConstituantNavigation).AsNoTracking().ToListAsync();
 
             if (aliment == null)
             {
                 return NotFound();
             }
+
 
             return Ok(aliment);
         }
@@ -107,7 +108,7 @@ namespace CiqualAPI.Controllers
                 }
             }
 
-            return CreatedAtAction("GetAliment", new { id = aliment.IdAliment }, aliment);
+            return CreatedAtAction("GetAliment", aliment.IdAliment, aliment);
         }
 
         // DELETE: api/Aliments/5

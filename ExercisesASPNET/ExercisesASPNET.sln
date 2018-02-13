@@ -9,7 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoList", "TodoList\TodoLi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ciqual", "Ciqual\Ciqual.csproj", "{4A9E6280-60BC-4CC9-84E1-D8A756E74243}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CiqualAPI", "CiqualAPI\CiqualAPI.csproj", "{2481F23C-F1D2-4AC3-9EC1-7F8A260EBE9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CiqualAPI", "CiqualAPI\CiqualAPI.csproj", "{2481F23C-F1D2-4AC3-9EC1-7F8A260EBE9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCiqualAPI", "TestCiqualAPI\TestCiqualAPI.csproj", "{B96DBDEB-6B1E-43CE-9501-358640E14D7A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Appli_Cliente_CiqualAPI", "\\PARME22\Formation\Qui Khanh\Ciqual\Appli_Cliente_CiqualAPI\Appli_Cliente_CiqualAPI.csproj", "{5A6D36D8-FF34-409A-A08F-D5AFA1F71379}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{2481F23C-F1D2-4AC3-9EC1-7F8A260EBE9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2481F23C-F1D2-4AC3-9EC1-7F8A260EBE9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2481F23C-F1D2-4AC3-9EC1-7F8A260EBE9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B96DBDEB-6B1E-43CE-9501-358640E14D7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B96DBDEB-6B1E-43CE-9501-358640E14D7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B96DBDEB-6B1E-43CE-9501-358640E14D7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B96DBDEB-6B1E-43CE-9501-358640E14D7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A6D36D8-FF34-409A-A08F-D5AFA1F71379}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A6D36D8-FF34-409A-A08F-D5AFA1F71379}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A6D36D8-FF34-409A-A08F-D5AFA1F71379}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A6D36D8-FF34-409A-A08F-D5AFA1F71379}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

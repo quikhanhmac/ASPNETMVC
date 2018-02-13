@@ -31,7 +31,8 @@ namespace Ciqual.Controllers
             //if (string.IsNullOrEmpty(FSelect))
             //    FSelect = _context.Famille.FirstOrDefault().CodeFamille;
             ////recuperer les aliments de la famille triée
-            //vmAliment.Aliments = await _context.Aliment.Where(a=>a.CodeFamille== FSelect).OrderBy(a => a.Nom).Include(a=>a.Composition).AsNoTracking().ToListAsync();
+            //vmAliment.Aliments = await _context.Aliment.Where(a=>a.CodeFamille== FSelect).OrderBy(a => a.Nom)
+            //.Include(a=>a.Composition).AsNoTracking().ToListAsync();
             //          return View(vmAliment);
             // Requête SQL optimisée : on ramène uniquement les infos nécessaires
             var vmAliment = new AlimentsVM();
